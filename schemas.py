@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import Optional
+from typing import Optional, List
 
 
 class StudentCreate(BaseModel):
@@ -29,7 +29,6 @@ class StudentResponse(BaseModel):
     class Config:
         from_attributes = True
 
-
 class RegisterRequest(BaseModel):
     username: str
     password: str
@@ -42,3 +41,10 @@ class LoginRequest(BaseModel):
 
 class LoginResponse(BaseModel):
     session_id: str
+
+class CsvLoadRequest(BaseModel):
+    path: str
+
+
+class StudentsDeleteRequest(BaseModel):
+    ids: List[int]
